@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: "Josefin-Sans";
+  background-color: #fdf4ef;
+  color: black;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+.Header{
+  margin-left: 2%;
+  margin-right: 4%;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .head{
+    max-width: 100%;
+    max-height: 100%;
+    img{
+      height: 50%;
+      width: 40%;
+
+    }
+  }
+  .list{
+    display: none;
+    ul{
+      display: flex;
+      li{
+       list-style-type: none;
+       a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+        margin-left: 2rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        &:hover{
+          color: #ff7f50;
+          transform: scale(1.1);
+        }
+      } 
+      
+      } 
+    }
+
+    
+  }
+  .ic{
+    display: flex;
+    gap: 20px;
+    .icon{
+      font-size: 25px;
+    }
+  }
+  hr{
+    color: red;
+  }
+  
+}
+
+
+
+@media (min-width:768px){
+  .Header{
+    .list{
+      display: block;
+    }
+  }
+}
+
