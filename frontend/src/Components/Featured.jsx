@@ -8,7 +8,7 @@ const Featured = () => {
   const dishesPerPage = 3; 
 
   useEffect(() => {
-    fetch("/Featured.json")
+    fetch("/Dishes.json")
       .then((res) => res.json())
       .then((data) => setDishes(data))
       .catch((err) => console.error("Failed to load featured dishes:", err));
