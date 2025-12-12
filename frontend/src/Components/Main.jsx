@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { IoMdArrowBack } from "@react-icons/all-files/io/IoMdArrowBack"; 
 
 
 const Main = () => {
+  const navigate = useNavigate();
+  const handleBack =()=>{
+    navigate(-1);
+  }
+
   const [dishes, setDishes] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
@@ -37,7 +45,11 @@ const Main = () => {
   return (
     <div className="Main">
       <div className="main-header">
-        <h2>Main Dishes</h2>
+        <div className="mainn">
+          <IoMdArrowBack onClick={handleBack} />
+          <h2>Main Dishes</h2>
+        </div>
+
 
         <div className="filters">
           <input
@@ -65,14 +77,15 @@ const Main = () => {
       <div className="dishes-grid">
         {currentDishes.length > 0 ? (
           currentDishes.map((dish) => (
-            <div key={dish.id} className="card">
-              <img src={dish.image} alt={dish.name} />
+            <Link to={`/productdetails/${dish.id}`} key={dish.id} className="card">
+              <img src={dish.image} alt={dish.name} loading="lazy" />
               <div className="info">
                 <h3>{dish.name}</h3>
                 <p>{dish.description}</p>
                 <span className="price">₦{dish.price}</span>
               </div>
-            </div>
+            </Link>
+
           ))
         ) : (
           <p>No dishes found.</p>
