@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
 
 const Featured = () => {
   const [dishes, setDishes] = useState([]);
   const [page, setPage] = useState(0);
-  const dishesPerPage = 3; 
+  const dishesPerPage = 3;
 
   useEffect(() => {
     fetch("/Dishes.json")
-      .then((res) => res.json())
-      .then((data) => setDishes(data))
-      .catch((err) => console.error("Failed to load featured dishes:", err));
+      .then(res => res.json())
+      .then(data => setDishes(data))
+      .catch(err => console.error("Failed to load featured dishes:", err));
   }, []);
 
   const handleNext = () => {
@@ -29,39 +28,40 @@ const Featured = () => {
   const start = page * dishesPerPage;
   const end = start + dishesPerPage;
   const visibleDishes = dishes.slice(start, end);
-  
-  const navigate = useNavigate()
 
-  const handleClick=()=>{
-    navigate('/category')
-  }
+  const navigate = useNavigate();
 
   return (
     <section className="Featured">
       <div className="container">
-            <h2>Featured Dishes</h2>
-            <p>Our top picks just for you</p>
+        <h2>Featured Dishes</h2>
+        <p>Our top picks just for you</p>
 
-            <div className="dishes">
-            {visibleDishes.map((dish) => (
-                <div key={dish.id} className="card">
-                <img src={dish.image} alt={dish.name} loading="lazy" />
-                <div className="info">
-                    <h3>{dish.name}</h3>
-                    <p>{dish.description}</p>
-                    <span className="price">₦{dish.price}</span>
-                </div>
-                </div>
-            ))}
-            </div>
+        <div className="dishes">
+          {visibleDishes.map(dish => (
+            <Link
+              key={dish.id}
+              to={`/productdetails/${dish.id}`}
+              className="card"
+            >
+              <img src={dish.image} alt={dish.name} loading="lazy" />
+              <div className="info">
+                <h3>{dish.name}</h3>
+                <p>{dish.description}</p>
+                <span className="price">₦{dish.price}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-            <div className="pagination-btns">
-              <button onClick={handlePrev} disabled={page === 0}>‹</button>
-              <button onClick={handleNext} disabled={end >= dishes.length}>›</button>
-            </div>
-            <div className="more">
-                <button onClick={handleClick}>See More</button>
-            </div>
+        <div className="pagination-btns">
+          <button onClick={handlePrev} disabled={page === 0}>‹</button>
+          <button onClick={handleNext} disabled={end >= dishes.length}>›</button>
+        </div>
+
+        <div className="more">
+          <button onClick={() => navigate("/category")}>See More</button>
+        </div>
       </div>
     </section>
   );

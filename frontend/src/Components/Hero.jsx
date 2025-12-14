@@ -20,15 +20,15 @@ const Hero = () => {
         </div>
         <h3>Browse by Category</h3>
         <div className='all'>
-            <div className='ffoo'>
+            <div className='ffoo' onClick={handleClick}>
                 <img src={Food} alt='Foods' loading='lazy'/>
                 <h3>Foods</h3>
             </div>
-            <div>
+            <div onClick={handleClick}>
                 <img src={Drink} alt='Drink' loading='lazy'/>
                 <h3>Drinks</h3>
             </div>
-            <div>
+            <div onClick={handleClick}>
                 <img src={Pastry} alt='Pastry' loading='lazy'/>
                 <h3>Pastry</h3>
             </div>

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { CartContext } from './CartContext';
 import { IoMdArrowBack } from "@react-icons/all-files/io/IoMdArrowBack"; 
 
 const ProductDetails = () => {
@@ -10,7 +11,8 @@ const ProductDetails = () => {
 
   const { id } = useParams();
   const [dish, setDish] = useState(null);
-  const [quantity, setQuantity] = useState(1); // initial quantity is 1
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     fetch('/Dishes.json')
@@ -48,7 +50,7 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <button className='add-to-cart'>
+        <button className='add-to-cart' onClick={() => addToCart(dish, quantity)} >
           Add {quantity} to Cart
         </button>
       </div>
