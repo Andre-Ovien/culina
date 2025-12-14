@@ -8,25 +8,28 @@ import Checkout from './Pages/Checkout'
 import Order from './Pages/Order'
 import NotFound from './Pages/NotFound'
 import Login from './Pages/Login'
+import { CartProvider } from './Components/CartContext' 
 
 
 
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/category' element={<Category/>}/>
-        <Route path='/productdetails/:id' element={<ProductDetails/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
-        <Route path='/order' element={<Order/>}/>
-        <Route path='*' element={<NotFound/>}/>
-        <Route path='/login' element={<Login/>}/>
-        
-      </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/category' element={<Category/>}/>
+            <Route path='/productdetails/:id' element={<ProductDetails/>}/>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
+            <Route path='/order' element={<Order/>}/>
+            <Route path='*' element={<NotFound/>}/>
+            <Route path='/login' element={<Login/>}/>
+            
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
       
     </div>
   )
