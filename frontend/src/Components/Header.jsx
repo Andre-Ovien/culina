@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import logo from '../assets/IMG-20251204-WA0007-removebg-preview.png'
-import { CgProfile } from "@react-icons/all-files/cg/CgProfile";
+import { IoIosNotifications } from "react-icons/io";
 import { IoCartOutline } from "@react-icons/all-files/io5/IoCartOutline";
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
         navigate('/cart')
     }
     const hand =()=>{
-        navigate('/login')
+        navigate('/notification')
     }
   return (
     <div className='Header'>
@@ -38,7 +38,7 @@ const Header = () => {
             </ul>
         </div>
         <div className='ic'>
-            <CgProfile className='icon'  onClick={hand}/>
+            <IoIosNotifications className='icon' onClick={hand}/>
             <IoCartOutline className='icon' onClick={handleClick} />
         </div>
         <hr/>

@@ -1,23 +1,34 @@
 import React from 'react'
-import {Link } from  'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { RiHome2Line } from "react-icons/ri";
+import { GrCatalogOption } from "react-icons/gr";
+import { FaRegHeart } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 
 const Footer = () => {
   return (
     <div className='Footer'>
-        <hr/>
-        <div>
-            <div>
-                
-            </div>
-            <p> &copy; 2025 Culina. All rights reserved</p>
-        </div>
-      
+      <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>
+        <RiHome2Line />
+        <span>Home</span>
+      </NavLink>
+
+      <NavLink to="/category" className={({ isActive }) => isActive ? 'active' : ''}>
+        <GrCatalogOption />
+        <span>Category</span>
+      </NavLink>
+
+      <NavLink to="/favorites" className={({ isActive }) => isActive ? 'active' : ''}>
+        <FaRegHeart />
+        <span>Favorites</span>
+      </NavLink>
+
+      <NavLink to="/login" className={({ isActive }) => isActive ? 'active' : ''}>
+        <CgProfile />
+        <span>Profile</span>
+      </NavLink>
     </div>
   )
 }
 
-export default Footer
-
-
-
-
+export default Footer;
