@@ -8,6 +8,7 @@ import Checkout from './Pages/Checkout'
 import Order from './Pages/Order'
 import NotFound from './Pages/NotFound'
 import Login from './Pages/Login'
+import Notification from './Pages/Notitfication'
 import { CartProvider } from './Components/CartContext' 
 
 
@@ -26,6 +27,8 @@ const App = () => {
             <Route path='/order' element={<Order/>}/>
             <Route path='*' element={<NotFound/>}/>
             <Route path='/login' element={<Login/>}/>
+
+            <Route path='/notifications' element={<Notification/>}/>
             
           </Routes>
         </BrowserRouter>
