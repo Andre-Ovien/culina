@@ -10,6 +10,9 @@ import NotFound from './Pages/NotFound'
 import Login from './Pages/Login'
 import Notification from './Pages/Notitfication'
 import { CartProvider } from './Components/CartContext' 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -32,6 +35,7 @@ const App = () => {
             
           </Routes>
         </BrowserRouter>
+        <ToastContainer position="top-right" autoClose={2000} />
       </CartProvider>
       
     </div>

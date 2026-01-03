@@ -13,6 +13,8 @@ body{
   margin: 0;
   padding: 0;
 }
+
+
 .Header{
   margin-left: 2%;
   margin-right: 4%;
@@ -20,15 +22,16 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .head{
     max-width: 100%;
     max-height: 100%;
     img{
       height: 50%;
       width: 40%;
-
     }
   }
+
   .list{
     display: none;
     ul{
@@ -47,24 +50,58 @@ body{
           transform: scale(1.1);
         }
       } 
-      
       } 
     }
-
-    
   }
+
   .ic{
     display: flex;
     gap: 20px;
+    position: relative;
+
     .icon{
       font-size: 25px;
+      cursor: pointer;
+    }
+
+    .cart-icon{
+      position: relative;
+
+      .cart-count{
+        position: absolute;
+        top: -5px;
+        right: -8px;
+        background-color: #ff6600;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+        font-weight: bold;
+      }
     }
   }
+
   hr{
     color: red;
   }
-  
 }
+
+
+@media (min-width: 768px) {
+  .list{
+    display: block;
+    ul{
+      display: flex;
+      gap: 20px;
+      li{
+        a{
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
 
 
 
