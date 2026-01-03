@@ -1,13 +1,13 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CartContext } from './CartContext';
 import { IoMdArrowBack } from "@react-icons/all-files/io/IoMdArrowBack"; 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetails = () => {
   const navigate = useNavigate();
-  const handleBack = () => {
-    navigate(-1);
-  };
+  const handleBack = () => navigate(-1);
 
   const { id } = useParams();
   const [dish, setDish] = useState(null);
@@ -28,9 +28,24 @@ const ProductDetails = () => {
   const increaseQuantity = () => setQuantity(prev => prev + 1);
   const decreaseQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
 
+  const handleAddToCart = () => {
+    addToCart(dish, quantity);
+    toast.success(`${dish.name} (${quantity}) added to cart!`, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      className: 'custom-toast',
+      bodyClassName: 'custom-toast-body',
+      closeButton: false
+    });
+  };
+
   return (
     <div className='product-details'>
-      <IoMdArrowBack onClick={handleBack} style={{ cursor: 'pointer', fontSize: '24px', }} />
+      <IoMdArrowBack onClick={handleBack} style={{ cursor: 'pointer', fontSize: '24px', marginBottom: '20px' }} />
 
       <div className='left'>
         <img src={dish.image} alt={dish.name} />
@@ -50,10 +65,12 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <button className='add-to-cart' onClick={() => addToCart(dish, quantity)} >
+        <button className='add-to-cart' onClick={handleAddToCart}>
           Add {quantity} to Cart
         </button>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };
